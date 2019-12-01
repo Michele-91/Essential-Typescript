@@ -1,26 +1,21 @@
-
-
-function calculateTax(amount: number, format: boolean): string | number | null {
-    if (amount === 0) {
-        return null;
+function calculateTax(amount: number): number {
+    return amount * 1.2;
+}
+function writePrice(product: string, price: number): void {
+    console.log(`Price for ${product}: $${price.toFixed(2)}`);
+}
+enum Product { Hat, Gloves, Umbrella }
+let products: [Product, number][] = [[Product.Hat, 100], [Product.Gloves, 75]];
+products.forEach((prod: [Product, number]) => {
+    switch (prod[0]) {
+        case Product.Hat:
+            writePrice("Hat", calculateTax(prod[1]));
+            break;
+        case Product.Gloves:
+            writePrice("Gloves", calculateTax(prod[1]));
+            break;
+        case Product.Umbrella:
+            writePrice("Umbrella", calculateTax(prod[1]));
+            break;
     }
-    const calcAmount = amount * 1.2;
-    return format ? `$${calcAmount.toFixed(2)}` : calcAmount;
-}
-let taxValue: string | number | null = calculateTax(0, false);
-switch (typeof taxValue) {
-    case "number":
-        console.log(`Number Value: ${taxValue.toFixed(2)}`);
-        break;
-    case "string":
-        console.log(`String Value: ${taxValue.charAt(0)}`);
-        break;
-    default:
-        if (taxValue === null) {
-            console.log("Value is null");
-        } else {
-            console.log(typeof taxValue);
-            let value: never = taxValue;
-            console.log(`Unexpected type for value: ${value}`);
-        }
-}
+});

@@ -5,7 +5,8 @@
         "rootDir": "./src",
         "moduleResolution": "node",
         "declaration": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true
+        // "noImplicitAny": true,
+        // "strictNullChecks": true,
+        // "noImplicitReturns": true
     }
 }
